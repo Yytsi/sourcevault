@@ -9,6 +9,7 @@
 
 ## Installation
 
+
 1. Clone this repository or [download the newest release](https://github.com/Yytsi/sourcevault/releases)  
 
 2. Navigate to the project's root folder   
