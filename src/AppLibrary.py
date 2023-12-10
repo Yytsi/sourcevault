@@ -1,4 +1,4 @@
-"""Moduuli joka ..."""
+"""Kirjastot Root-olion luomista varten"""
 from root import Root
 from app_ui import AppUI
 from database_handler import Database
@@ -8,7 +8,7 @@ from stub_io import StubIO
 
 class AppLibrary:
     """
-    Apin hyödyntämä kirjasto.
+    Robot Frameworkin käyttämä kirjasto.
     ...
 
     Attributes
@@ -23,24 +23,19 @@ class AppLibrary:
     Methods
     -------
     output_should_contain():
-        placeholder
+        Tarkistaa, tulostiko ohjelma tietyn outputin.
     input():
-        placeholder
+        Lisää komennon stubiin.
     run_application():
-        placeholder
+        Suorittaa komennot.
     clear():
-        placeholder
+        Tyhjentää tietokannan.
     """
 
     def __init__(self):
         """
         Luokan konstruktori.
         ...
-
-        Parameters
-        ----------
-        muuttuja : tyyppi
-            kuvaus
         """
         self._io = StubIO([])
 
@@ -55,51 +50,42 @@ class AppLibrary:
 
     def output_should_contain(self, value):
         """
-        Kuvaus Funktion toiminnalisuudesta
+        Tarkistaa, tulostiko ohjelma tietyn outputin.
         ...
 
         Parameters
         ----------
-        muuttuja : tyyppi
-            kuvaus
+        value : string
+            Output
         """
         if not value in self._io.outputs:
             raise AssertionError(f'Output "{value}" is not in {str(self._io.outputs)}')
 
     def input(self, value):
         """
-        Kuvaus Funktion toiminnalisuudesta
+        Lisää komennon stubiin.
         ...
 
         Parameters
         ----------
-        muuttuja : tyyppi
-            kuvaus
+        value : string
+            Suoritettava komento.
         """
         self._io.inputs.append(value)
 
     def run_application(self):
         """
-        Kuvaus Funktion toiminnalisuudesta
+        Suorittaa komennot.
         ...
-
-        Parameters
-        ----------
-        muuttuja : tyyppi
-            kuvaus
         """
         self.app.run_app()
 
     def clear(self):
         """
-        Kuvaus Funktion toiminnalisuudesta
+        Tyhjentää tietokannan.
         ...
-
-        Parameters
-        ----------
-        muuttuja : tyyppi
-            kuvaus
         """
         self.root.data_handler.clear_database()
-        self.root.remove_reference("Kirjailija23")
-        # poista kaikki
+        keys=[source.citation_key for source in self.root.my_sources]
+        for key in keys:
+            self.root.remove_reference(key)
