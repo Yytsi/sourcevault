@@ -16,8 +16,7 @@ Add Article With Valid Information
     Input Command  20
     Input Command  20
     Input Command  q
-    Input Command  10
-    Run Application
+    Run
     Output Should Contain  Reference added
 
 
@@ -29,8 +28,7 @@ Add Inproceeding With Valid Information
     Input Command  2023
     Input Command  Kirja
     Input Command  q
-    Input Command  10
-    Run Application
+    Run
     Output Should Contain  Reference added
 
 Add Misc With Valid Information
@@ -42,8 +40,7 @@ Add Misc With Valid Information
     Input Command  2023
     Input Command  Huom
     Input Command  q
-    Input Command  10
-    Run Application
+    Run
     Output Should Contain  Reference added
 
 Add Phd With Valid Information
@@ -56,7 +53,6 @@ Add Phd With Valid Information
     Input Command  Osoite
     Input Command  12
     Input Command  q
-    Input Command  10
-    Run Application
+    Run
     Output Should Contain  Reference added
 

@@ -15,6 +15,11 @@ Create Book Source
     Input Command  Julkaisija
     Input Command  q
 
+Source As Text
+    [Arguments]   ${citation_key}
+    ${string}=  Get String  ${citation_key}
+    RETURN  ${string}
+
 Run
     Input Command  10
     Run Application

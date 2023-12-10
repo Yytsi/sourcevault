@@ -89,3 +89,15 @@ class AppLibrary:
         keys=[source.citation_key for source in self.root.my_sources]
         for key in keys:
             self.root.remove_reference(key)
+
+    def get_string(self, citation_key):
+        """
+        Hakee viitteen tekstiversion.
+        ...
+
+        Parameters
+        ----------
+        citation_key : string
+            Viitteen avain.
+        """
+        return str(self.root.get_reference_by_key(citation_key))
