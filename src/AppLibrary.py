@@ -1,4 +1,5 @@
 """Kirjastot Root-olion luomista varten"""
+import os
 from root import Root
 from app_ui import AppUI
 from database_handler import Database
@@ -30,6 +31,10 @@ class AppLibrary:
         Suorittaa komennot.
     clear():
         Tyhjentää tietokannan.
+    get_string():
+        Hakee viitteen tekstiversion.
+    get_bibtex_location():
+        Hakee bibtex-tiedoston sijainnin.
     """
 
     def __init__(self):
@@ -101,3 +106,10 @@ class AppLibrary:
             Viitteen avain.
         """
         return str(self.root.get_reference_by_key(citation_key))
+
+    def get_bibtex_location(self):
+        """
+        Hakee bibtex-tiedoston sijainnin.
+        ...
+        """
+        return f"Wrote to: {os.getcwd()}/{self.root.location} \n"
