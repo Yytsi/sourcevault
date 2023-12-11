@@ -102,7 +102,7 @@ class AppUI:
         ref = ds.find_by_doi(doi)
         self.root.add_source(ref)
         # TODO! Add with tags!
-        print("Source added!")
+        self.root.io_handler.write_output("Source added!")
 
     def create_new(self):
         """

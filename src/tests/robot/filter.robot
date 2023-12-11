@@ -46,7 +46,7 @@ Find Source With Existing Author
 
 Find No Sources With NonExisting Author
     Input Command  7
-    Input Command  3
+    Input Command  1
     Input Command  Kirjailija2
     Input Command  4
     Run
@@ -63,7 +63,7 @@ Find Source With Existing Year
 
 Find No Sources With NonExisting Year
     Input Command  7
-    Input Command  3
+    Input Command  2
     Input Command  2024
     Input Command  4
     Run
