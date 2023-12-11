@@ -16,7 +16,7 @@ def convert_to_bibtex(source_type, **fields):
 
     identifier += str(fields.get("year"))[-2:]
     bibtex_str = f"@{source_type}" + "{" + f"{identifier},\n"
-    fields_length = len(fields.items() - 1)
+    fields_length = len(fields.items()) -1
     for i, (field, value) in enumerate(fields.items()):
         end_char = " ,"[i != fields_length]
         bibtex_str += f"    {field} = {{{value}}}{end_char}\n"
