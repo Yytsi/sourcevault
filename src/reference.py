@@ -30,9 +30,7 @@ class Reference:
         self.reference_type = reference_type
         self.citation_key = citation_key
         self.fields = fields
-        self.tags = tags
-        if not tags:
-            self.tags = []
+        self.tags = tags or []
 
     def generate_citation_key(self):
         """
