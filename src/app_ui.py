@@ -268,7 +268,7 @@ class AppUI:
             self.root.io_handler.write_output("no sources yet :/ \n")
         else:
             self.root.io_handler.write_output(
-                f"Wrote to: {os.getcwd()}/{self.root.location} \n"
+                f"Wrote to: {os.getcwd()}\{self.root.location} \n"
             )
             self.root.write_sources_bibtex()
 
