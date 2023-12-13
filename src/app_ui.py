@@ -42,14 +42,22 @@ class AppUI:
         muuttuja : tyyppi
             kuvaus
         """
-        self.root.read_sources_from_database()
+        if self.root.read_sources_from_database() is True:
+            print("connected to bucket!")
+        else:
+            # kysy käyttäjältä halutaanko configuroida bucketti
+            print("\nWould you like to connect to an AWS bucket?")
+            print('This can be done with the "configure bucket" command')
+            print(
+                "(this will overwrite the current database, for more info, see guide in readme)"
+            )
 
         while True:
             command = self.root.io_handler.read_input(
                 (
                     "\n1 : create new\n2 : list sources as text\n3 : create bibtext\n4 : list all citation keys\n"
                     "5 : show based on citation key\n6 : delete based on citation key\n7 : filter references"
-                    "\n8 : find reference with DOI\n9 : edit based on citation key\n10 : exit program\n"
+                    "\n8 : find reference with DOI\n9 : edit based on citation key\n10 : configure bucket\n11 : exit program\n"
                 )
             )
 
@@ -82,6 +90,9 @@ class AppUI:
                     self.edit_by_key()
 
                 case "10":
+                    self.create_env()
+
+                case "11":
                     # Lopetus
                     break
 
@@ -294,7 +305,7 @@ class AppUI:
                     field_key = "tags"
                 case "4":
                     return
-                case default: # pylint: disable=unused-variable
+                case default:  # pylint: disable=unused-variable
                     self.root.io_handler.write_output("Please pick a valid option")
                     continue
 
@@ -391,3 +402,36 @@ class AppUI:
         self.root.io_handler.write_output(
             f"Reference edited ( {og_ref.citation_key} --> {edited_ref.citation_key} )"
         )
+
+    def create_env(self):
+        """
+        Luo .env tiedoston.
+        """
+        # get input:
+        bucket_name = self.root.io_handler.read_input(
+            ("\nInput the name of the AWS bucket:")
+        )
+        access_key = self.root.io_handler.read_input(("\nInput AWS_ACCESS_KEY_ID:"))
+        secret_key = self.root.io_handler.read_input(("\nInput AWS_SECRET_ACCESS_KEY:"))
+
+        # varmista input
+        print("\n Would you like to proceed with the following?:")
+        print(f"AWS bucket: {bucket_name}")
+        print(f"AWS_ACCESS_KEY_ID: {access_key}")
+        print(f"AWS_SECRET_ACCESS_KEY: {secret_key}")
+
+        confirm = self.root.io_handler.read_input(("y/n?: "))
+
+        if confirm == "y":
+            self.write_env(bucket_name, access_key, secret_key)
+            print("\n.env updated")
+            print("Restart program to connect database")
+
+    def write_env(self, bucket_name, access_key, secret_key):
+        """
+        kirjoittaa .env tiedoston.
+        """
+        with open(".env", "w", encoding="utf-8") as file:
+            file.write(
+                f'AWS_ACCESS_KEY_ID="{access_key}"\nAWS_SECRET_ACCESS_KEY="{secret_key}"\nAWS_BUCKET_NAME="{bucket_name}"'
+            )

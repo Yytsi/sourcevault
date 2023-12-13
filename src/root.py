@@ -96,10 +96,12 @@ class Root:
             if self.uses_database:
                 self.cloud_data_handler.get_references()
             self.my_sources = self.data_handler.get_all_references()
+            return True
         except OperationalError:
-            pass
+            return False
         except botocore.exceptions.ClientError:
             print("Unable to import database from cloud")
+            return False
 
     def add_source(self, ref):
         """
