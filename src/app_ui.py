@@ -1,12 +1,13 @@
 """Moduuli joka vastaa käyttäjän näkemästä käyttöliittymästä"""
 import os
 import time
+import platform
 from asciimatics.screen import Screen
 from asciimatics.effects import Print
 from asciimatics.renderers import FigletText, Rainbow
 from doi_seacher import DOISearcher
 from reference import Reference
-import platform
+
 
 def play_move_animation(text, duration=3):
     """
