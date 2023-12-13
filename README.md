@@ -22,6 +22,7 @@ poetry install
 ```
 AWS_ACCESS_KEY_ID= <key id>
 AWS_SECRET_ACCESS_KEY= <secret access key>
+AWS_BUCKET_NAME= <aws bucket name>
 ```
 
 5. Enter virtual environment with
