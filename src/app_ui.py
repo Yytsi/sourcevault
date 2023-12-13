@@ -114,7 +114,7 @@ class AppUI:
                     self.list_sources()
 
                 case "3":
-                    play_move_animation("Writing to BiBTeX")
+                    play_move_animation("Processing...")
                     self.convert_to_bibtex()
 
                 case "4":
