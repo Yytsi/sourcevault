@@ -6,6 +6,7 @@ from asciimatics.effects import Print
 from asciimatics.renderers import FigletText, Rainbow
 from doi_seacher import DOISearcher
 from reference import Reference
+import platform
 
 def play_move_animation(text, duration=3):
     """
@@ -267,8 +268,9 @@ class AppUI:
         if not self.root.my_sources:
             self.root.io_handler.write_output("no sources yet :/ \n")
         else:
+            split_char = "\\" if (platform.system() == "Windows") else "/"
             self.root.io_handler.write_output(
-                f"Wrote to: {os.getcwd()}\{self.root.location} \n"
+                f"Wrote to: {os.getcwd()}{split_char}{self.root.location} \n"
             )
             self.root.write_sources_bibtex()
 
