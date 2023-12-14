@@ -2,58 +2,8 @@
 import os
 import time
 import platform
-from asciimatics.screen import Screen
-from asciimatics.effects import Print
-from asciimatics.renderers import FigletText, Rainbow
 from doi_seacher import DOISearcher
 from reference import Reference
-
-
-def play_move_animation(text, duration=3):
-    """
-    Toistaa liikkeen animaation näytöllä.
-
-    Parameters:
-        text (str): Animaatiossa näytettävä teksti.
-        duration (float, valinnainen): Animaation kesto sekunteina. Oletusarvona 3.
-    """
-    # Check if we're in Github actions or CI to prevent robot test failures
-    if os.getenv("CI") or os.getenv("GITHUB_ACTIONS"):
-        pass
-    else:
-        def animate(screen):
-            start_time = time.time()
-            text_length = len(text) * 8
-
-            start_x = int(max(0, screen.width // 2 - text_length // 2))
-            end_x = screen.width
-            current_x = start_x
-
-            total_distance = end_x - start_x
-            total_frames = int(duration / 0.05)
-            step = max(1, total_distance // total_frames)
-
-            color_renderer = Rainbow(screen, FigletText(text, font="big"))
-
-            while True:
-                screen.clear_buffer(screen.COLOUR_BLACK, screen.A_NORMAL, screen.COLOUR_BLACK)
-                effect = Print(screen, color_renderer, x=current_x, y=int(screen.height // 2), transparent=False)
-                effect.update(0)
-
-                screen.refresh()
-                time.sleep(0.05)
-
-                current_x += step
-                if current_x > end_x:
-                    current_x = start_x
-
-                if time.time() - start_time >= duration:
-                    break
-
-            screen.clear_buffer(screen.COLOUR_BLACK, screen.A_NORMAL, screen.COLOUR_BLACK)
-            screen.refresh()
-
-        Screen.wrapper(animate)
 
 class AppUI:
     """
@@ -120,7 +70,6 @@ class AppUI:
                     self.list_sources()
 
                 case "3":
-                    play_move_animation("Processing...")
                     self.convert_to_bibtex()
 
                 case "4":
