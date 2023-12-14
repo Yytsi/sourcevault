@@ -18,7 +18,7 @@
 poetry install
 ```
 
-4. Create .env file with the following contents
+4. Create a `.env` file from the `.env.template` file
 
 5. Enter virtual environment with
 ```
