@@ -9,7 +9,6 @@
 
 ## Installation
 
-
 1. Clone this repository or [download the newest release](https://github.com/Yytsi/sourcevault/releases)  
 
 2. Navigate to the project's root folder   
@@ -20,11 +19,6 @@ poetry install
 ```
 
 4. Create .env file with the following contents
-```
-AWS_ACCESS_KEY_ID= <key id>
-AWS_SECRET_ACCESS_KEY= <secret access key>
-AWS_BUCKET_NAME= <aws bucket name>
-```
 
 5. Enter virtual environment with
 ```
