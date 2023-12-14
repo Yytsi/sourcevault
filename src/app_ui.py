@@ -1,6 +1,5 @@
 """Moduuli joka vastaa käyttäjän näkemästä käyttöliittymästä"""
 import os
-import time
 import platform
 from doi_seacher import DOISearcher
 from reference import Reference
