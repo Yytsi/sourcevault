@@ -10,7 +10,7 @@ from sql_server import ServerHandler
 
 if not os.path.exists(".env"):
     with open(".env", "w", encoding="utf-8") as file:
-        file.write('AWS_ACCESS_KEY_ID=""\nAWS_SECRET_ACCESS_KEY=""\nAWS_BUCKET_NAME=""')
+        file.write('AWS_ACCESS_KEY_ID="a"\nAWS_SECRET_ACCESS_KEY="a"\nAWS_BUCKET_NAME="a"')
 
 env_config = dotenv_values(".env")
 aws_key = env_config["AWS_ACCESS_KEY_ID"]
