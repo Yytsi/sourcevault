@@ -153,15 +153,21 @@ class AppUI:
                     reference_type = "phdthesis"
                 case "6":
                     return
-                case default:  # pylint: disable=unused-variable
+                case _:
                     self.root.io_handler.write_output("Please pick a valid option")
                     continue
 
             for field in required_fields.split("|"):
-                fields_data[field] = self.root.io_handler.read_input(
-                    f"insert {field}: "
-                )
-
+                required = {"author", "title"}
+                if field in required:
+                    value = ""
+                    while value == "":
+                        value = self.root.io_handler.read_input(f"insert {field}: ")
+                    fields_data[field] = value
+                else:
+                    fields_data[field] = self.root.io_handler.read_input(
+                        f"insert {field}: "
+                    )
             break
 
         ref = Reference(reference_type, **fields_data)
