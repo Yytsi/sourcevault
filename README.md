@@ -7,6 +7,8 @@
 
 [Backlog](https://docs.google.com/spreadsheets/d/1Kn8T_J5zpqmHX5HLiwrYFkmAaxSycxQrstnDQTh-bX0/edit#gid=427790378)
 
+[Project report](https://docs.google.com/document/d/1hg1qGdubuWRNK4Pc0Bq5i8aquXfQrKJ10svzgk8NHvM/edit)
+
 ## Installation
 
 1. Clone this repository or [download the newest release](https://github.com/Yytsi/sourcevault/releases)  
