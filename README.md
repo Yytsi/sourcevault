@@ -20,12 +20,7 @@
 poetry install
 ```
 
-4. Create .env file with the following contents
-```
-AWS_ACCESS_KEY_ID= <key id>
-AWS_SECRET_ACCESS_KEY= <secret access key>
-AWS_BUCKET_NAME= <aws bucket name>
-```
+4. Create a `.env` file from the `.env.template` file
 
 5. Enter virtual environment with
 ```
